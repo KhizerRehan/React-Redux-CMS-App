@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './Home/Home.jsx';
 import About from './About/About.jsx';
 import Header from './common/Header.jsx'
-import PageNotFound from './PageNotFound.jsx'
+import Courses from './courses/courses.jsx';
+import PageNotFound from './PageNotFound.jsx';
 
 function App(){
     return (
@@ -12,6 +13,7 @@ function App(){
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/about" component={About}></Route>
+                <Route path="/courses" component={Courses}></Route>
                 <Route component={PageNotFound}></Route>
             </Switch>
         </div>

@@ -1,3 +1,5 @@
+# Credits `Cory-House` (This app is `re-implementation`) JUST FOR LEARNING PURPOSE.
+
 # Starter Kit for [Building Applications in React and Redux](http://www.pluralsight.com/author/cory-house) on Pluralsight
 
 ## Get Started

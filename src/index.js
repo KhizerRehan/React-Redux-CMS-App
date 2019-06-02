@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {render} from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from './components/App.jsx'; // App Routes
 import './index.css';
+import {Provider as ReduxProvider} from 'react-redux';
+import configureStore from './redux/configureStore.js';
 
 function HelloWorld() {
     return (
@@ -18,13 +20,16 @@ function HelloWorld() {
     )
 }
 
+const store = configureStore();
 //  BASIC HELLO-WORLD COMPONENT AND COMPONENT WITH ROUTING:
 render(
-    <>
-        <HelloWorld/>
-        <Router>
-            <App/>
-        </Router>
-    </>
+    <ReduxProvider store={store}>
+        <React.Fragment>
+            <HelloWorld/>
+            <Router>
+                <App/>
+            </Router>
+        </React.Fragment>
+    </ReduxProvider>
     , document.getElementById('app')
 );

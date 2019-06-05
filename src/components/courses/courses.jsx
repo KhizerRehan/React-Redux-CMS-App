@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as courseActions from '../../redux/actions';
+import PropTypes from 'prop-types';
 
 class Courses extends React.Component {
     constructor(props) {
@@ -19,7 +22,7 @@ class Courses extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        alert(this.state.course.title);
+        this.props.dispatch(courseActions.createCourse(this.state.course));
     }
 
     render() {
@@ -40,4 +43,21 @@ class Courses extends React.Component {
     }
 }
 
-export default Courses;
+Courses.propTypes = {      
+    dispatch: PropTypes.func.isRequired
+};
+
+function mapStateToProps(state) {
+    return {
+        courses: state.courses
+    }
+}
+
+/* 
+ Imp: mapDispatchToProps is omitted than by default
+ component gets a dispatch prop injected automatically
+ returned by connect Method that connect component with
+ redux store.
+*/
+
+export default connect(mapStateToProps)(Courses);

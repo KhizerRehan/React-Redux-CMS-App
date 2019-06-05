@@ -1,4 +1,4 @@
-import { CREATE_COURSE } from "../types/courseActionsTypes";
+import { CREATE_COURSE } from "../types";
 
 export function createCourse(course) {
    return {

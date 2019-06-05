@@ -37,13 +37,20 @@ class Courses extends React.Component {
                     />
 
                     <input type="submit" value="Save" />
+
+                    {
+                        this.props.courses.map(course =>(
+                            <div key={course.title}>{course.title}</div>
+                        ))
+                    }
                 </form>
             </React.Fragment>
         )
     }
 }
 
-Courses.propTypes = {      
+Courses.propTypes = {   
+    courses:PropTypes.array.isRequired,   
     dispatch: PropTypes.func.isRequired
 };
 

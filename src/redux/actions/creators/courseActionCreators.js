@@ -1,8 +1,8 @@
-import { CREATE_COURSE } from "../types";
+import * as types from "../types";
 
 export function createCourse(course) {
    return {
-    type: CREATE_COURSE,
+    type: types.CREATE_COURSE,
     course
    }
 }

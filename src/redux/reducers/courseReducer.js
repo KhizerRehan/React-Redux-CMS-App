@@ -1,8 +1,8 @@
-import { CREATE_COURSE } from "../actions/types/courseActionTypes";
+import * as types from "../actions/types";
 
 function courseReducer(state = [], action) {
     switch(action.type) {
-        case CREATE_COURSE: 
+        case types.CREATE_COURSE: 
          return [...state, {...action.course} ]; // (array of objects): add new course obj
         
         default:

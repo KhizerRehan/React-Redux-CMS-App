@@ -18,14 +18,20 @@ class Courses extends React.Component {
     }
      
     componentDidMount() {
-        this.props.actions.loadCourses().catch(err =>{
-            alert('Failed to fetch courses',err);
-        });
 
-
-        this.props.actions.loadAuthors().catch(err =>{
-            alert('Failed to fetch authors',err);
-        });
+        const { courses, authors, actions } = this.props;
+        
+        if(courses.length === 0) {
+            actions.loadCourses().catch(err =>{
+                alert('Failed to fetch courses',err);
+            });
+        }
+        
+        if(authors.length === 0) {
+           actions.loadAuthors().catch(err =>{
+                alert('Failed to fetch authors',err);
+            });
+        }
 
     }
 
@@ -61,14 +67,16 @@ class Courses extends React.Component {
     }
 }
 
-Courses.propTypes = {   
-    courses:PropTypes.array.isRequired,   
+Courses.propTypes = {  
+    authors: PropTypes.array.isRequired,
+    courses: PropTypes.array.isRequired,   
     actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
     return {
-        courses: state.courses
+        courses: state.courses,
+        authors: state.authors
     }
 }
 

@@ -19,7 +19,11 @@ class Courses extends React.Component {
     componentDidMount() {
         this.props.actions.loadCourses().catch(err =>{
             alert('Failed to fetch courses',err);
-        })
+        });
+
+        this.props.actions.loadAuthors().catch(err =>{
+            alert('Failed to fetch authors',err);
+        });
     }
 
     handleChange =  event =>{

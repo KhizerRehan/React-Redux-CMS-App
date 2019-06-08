@@ -75,7 +75,15 @@ Courses.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        courses: state.courses,
+        courses:
+        state.authors.length === 0 
+        ? [] 
+        : state.courses.map(course =>{
+            return {
+                ...course,
+                authorName: state.authors.find(author => author.id === course.authorId).name
+            }
+        }),
         authors: state.authors
     }
 }

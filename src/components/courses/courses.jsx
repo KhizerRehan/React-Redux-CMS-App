@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as courseActions from '../../redux/actions';
+import CourseList from './courseList.jsx';
+
 
 class Courses extends React.Component { 
     constructor(props) {
@@ -45,11 +47,7 @@ class Courses extends React.Component {
 
                     <input type="submit" value="Save" />
 
-                    {
-                        this.props.courses.map(course =>(
-                            <div key={course.title}>{course.title}</div>
-                        ))
-                    }
+                    <CourseList courses={this.props.courses}/>
                 </form>
             </React.Fragment>
         )

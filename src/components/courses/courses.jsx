@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as courseActions from '../../redux/actions';
 
-class Courses extends React.Component {
+class Courses extends React.Component { 
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +12,12 @@ class Courses extends React.Component {
                 title:""
             }
         }
+    }
+     
+    componentDidMount() {
+        this.props.actions.loadCourses().catch(err =>{
+            alert('Failed to fetch courses',err);
+        })
     }
 
     handleChange =  event =>{

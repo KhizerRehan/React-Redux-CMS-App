@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as courseActions from '../../redux/actions';
+import * as authorActions from '../../redux/actions';
 import CourseList from './courseList.jsx';
 
 
@@ -21,9 +22,11 @@ class Courses extends React.Component {
             alert('Failed to fetch courses',err);
         });
 
+
         this.props.actions.loadAuthors().catch(err =>{
             alert('Failed to fetch authors',err);
         });
+
     }
 
     handleChange =  event =>{
@@ -72,7 +75,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(courseActions, dispatch)
+        actions: {
+            loadCourses: bindActionCreators(courseActions.loadCourses,dispatch),
+            loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch)
+        }
+
     }
 }
 /* 

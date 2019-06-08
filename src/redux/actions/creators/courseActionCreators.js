@@ -15,7 +15,7 @@ export function loadCoursesSuccess(courses) {
    }
 }
 
-export function loadCourses(){
+export function loadCourses() {
    return (dispatch, getState) =>{
       console.log('loadCourses func called', getState())
       return courseApi

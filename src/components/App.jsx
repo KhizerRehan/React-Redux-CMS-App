@@ -4,7 +4,9 @@ import Home from './Home/Home.jsx';
 import About from './About/About.jsx';
 import Header from './common/Header.jsx'
 import Courses from './courses/courses.jsx';
+import ManageCourse from './courses/manageCourse.jsx';
 import PageNotFound from './PageNotFound.jsx';
+
 
 function App(){
     return (
@@ -14,6 +16,8 @@ function App(){
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/about" component={About}></Route>
                 <Route path="/courses" component={Courses}></Route>
+                <Route path="/course/:slug" component={ManageCourse}></Route>
+                <Route path="/course" component={ManageCourse}></Route>
                 <Route component={PageNotFound}></Route>
             </Switch>
         </div>

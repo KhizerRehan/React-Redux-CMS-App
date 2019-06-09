@@ -51,6 +51,12 @@ class ManageCourse extends React.Component {
 
     }
 
+    handleSave = (event) => {
+        event.preventDefault();
+        const { saveCourse  } = this.props;
+        saveCourse(this.state.course);
+    }
+
     render() {
      const { authors } = this.props;
 
@@ -61,7 +67,8 @@ class ManageCourse extends React.Component {
               course={newCourse} 
               errors={this.state.errors}  
               authors={authors}
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              onSave={this.handleSave} />
             </React.Fragment>
         )
     }
@@ -73,7 +80,8 @@ ManageCourse.propTypes = {
     loadCourses: PropTypes.func.isRequired,
     loadAuthors: PropTypes.func.isRequired,
     course: PropTypes.object,
-    errors: PropTypes.object
+    errors: PropTypes.object,
+    saveCourse: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -88,7 +96,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps =  {
     loadCourses: actionCreators.loadCourses,
-    loadAuthors: actionCreators.loadAuthors
+    loadAuthors: actionCreators.loadAuthors,
+    saveCourse: actionCreators.saveCourse
 }
 /* 
  Imp: mapDispatchToProps is omitted than by default

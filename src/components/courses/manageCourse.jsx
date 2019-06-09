@@ -37,6 +37,21 @@ class ManageCourse extends React.Component {
 
     }
 
+    handleChange = (event) =>{
+        const { name, value } = event.target;
+        this.setState({
+            ...this.state,
+            course:{
+                ...this.state.course,
+                name,
+                value
+            }
+        },()=>{
+            console.log('UPDATED STATE:',this.state);
+        })
+
+    }
+
     render() {
      const { authors } = this.props;
 
@@ -46,7 +61,8 @@ class ManageCourse extends React.Component {
               <CourseForm 
               course={newCourse} 
               errors={this.state.errors}  
-              authors={authors} />
+              authors={authors}
+              onChange={this.handleChange} />
             </React.Fragment>
         )
     }

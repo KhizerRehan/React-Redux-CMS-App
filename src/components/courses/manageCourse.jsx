@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actionCreators from '../../redux/actions/';
+import CourseForm from './courseForm.jsx';
+import newCourse from '../../../tools/mockData.js';
+
+
 
 
 class ManageCourse extends React.Component { 
@@ -10,7 +14,8 @@ class ManageCourse extends React.Component {
         this.state = {
             course:{
                 title:""
-            }
+            },
+            errors:{}
         }
     }
      
@@ -36,6 +41,10 @@ class ManageCourse extends React.Component {
         return (
             <React.Fragment>
               <h2> Manage Course</h2>
+              <CourseForm 
+              course={newCourse} 
+              errors={this.state.errors}  
+              authors={this.props.authors} />
             </React.Fragment>
         )
     }
@@ -45,7 +54,9 @@ ManageCourse.propTypes = {
     authors: PropTypes.array.isRequired,
     courses: PropTypes.array.isRequired,   
     loadCourses: PropTypes.func.isRequired,
-    loadAuthors: PropTypes.func.isRequired
+    loadAuthors: PropTypes.func.isRequired,
+    course: PropTypes.object,
+    errors: PropTypes.object
 };
 
 function mapStateToProps(state) {

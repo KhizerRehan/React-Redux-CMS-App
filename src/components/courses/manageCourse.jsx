@@ -12,9 +12,7 @@ class ManageCourse extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            course:{
-                title:""
-            },
+            course:{},
             errors:{}
         }
     }
@@ -43,8 +41,9 @@ class ManageCourse extends React.Component {
             ...this.state,
             course:{
                 ...this.state.course,
-                name,
-                value
+                [name]: name,
+                value,
+                [name]: name === "authorId" ? parseInt(value, 10) : value
             }
         },()=>{
             console.log('UPDATED STATE:',this.state);
@@ -62,7 +61,7 @@ class ManageCourse extends React.Component {
               course={newCourse} 
               errors={this.state.errors}  
               authors={authors}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}/>
             </React.Fragment>
         )
     }

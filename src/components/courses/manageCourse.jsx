@@ -21,7 +21,7 @@ class ManageCourse extends React.Component {
      
     componentDidMount() {
 
-    const { courses, authors, loadCourses, loadAuthors  } = this.props;
+     const { courses, authors, loadCourses, loadAuthors  } = this.props;
         
         if(courses.length === 0) {
             loadCourses().catch(err =>{
@@ -38,13 +38,15 @@ class ManageCourse extends React.Component {
     }
 
     render() {
+     const { authors } = this.props;
+
         return (
             <React.Fragment>
               <h2> Manage Course</h2>
               <CourseForm 
               course={newCourse} 
               errors={this.state.errors}  
-              authors={this.props.authors} />
+              authors={authors} />
             </React.Fragment>
         )
     }

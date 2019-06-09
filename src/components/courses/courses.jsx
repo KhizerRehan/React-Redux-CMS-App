@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as courseActions from '../../redux/actions';
-import * as authorActions from '../../redux/actions';
+import * as actionCreators from '../../redux/actions/';
 import CourseList from './courseList.jsx';
 
 
@@ -70,8 +69,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            loadCourses: bindActionCreators(courseActions.loadCourses,dispatch),
-            loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch)
+            loadCourses: bindActionCreators(actionCreators.loadCourses,dispatch),
+            loadAuthors: bindActionCreators(actionCreators.loadAuthors, dispatch)
         }
 
     }
